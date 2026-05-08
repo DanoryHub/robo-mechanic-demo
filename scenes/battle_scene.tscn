@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://vfv5rnf5vqab"]
 
 [ext_resource type="PackedScene" uid="uid://1vylxryk64ep" path="res://scenes/battle_field.tscn" id="1_idkgt"]
+[ext_resource type="Script" uid="uid://hnae3atw3rk5" path="res://scripts/battle_field/BS_h_split_container.gd" id="1_kinr6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idkgt"]
 bg_color = Color(1, 1, 1, 1)
@@ -25,6 +26,7 @@ split_offsets = PackedInt32Array(800)
 touch_dragger_enabled = true
 drag_area_highlight_in_editor = true
 split_offset = 800
+script = ExtResource("1_kinr6")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer" unique_id=1392946120]
 layout_mode = 2
@@ -34,6 +36,8 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="HSplitContainer/SubViewportContainer" unique_id=2057065153]
 handle_input_locally = false
 size = Vector2i(840, 648)
+size_2d_override = Vector2i(1220, 648)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="BattleField" parent="HSplitContainer/SubViewportContainer/SubViewport" unique_id=1424709616 instance=ExtResource("1_idkgt")]
@@ -57,3 +61,7 @@ size_flags_vertical = 3
 [node name="Button3" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=855143102]
 layout_mode = 2
 size_flags_vertical = 3
+
+[connection signal="ready" from="." to="HSplitContainer" method="_on_battle_scene_ready"]
+[connection signal="child_entered_tree" from="HSplitContainer" to="HSplitContainer" method="_on_child_entered_tree"]
+[connection signal="dragged" from="HSplitContainer" to="HSplitContainer" method="_on_dragged"]
