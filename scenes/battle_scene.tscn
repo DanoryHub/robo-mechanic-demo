@@ -46,19 +46,19 @@ render_target_update_mode = 4
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="HSplitContainer/VBoxContainer" unique_id=1554426030]
+[node name="RobotSystemPreviewPanel" type="Panel" parent="HSplitContainer/VBoxContainer" unique_id=1554426030]
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=764407461]
+[node name="StartButton" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=764407461]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button2" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=1441141604]
+[node name="StopButton" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=1441141604]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button3" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=855143102]
+[node name="QuitButton" type="Button" parent="HSplitContainer/VBoxContainer" unique_id=855143102]
 layout_mode = 2
 size_flags_vertical = 3
 

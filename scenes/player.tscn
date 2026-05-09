@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bdpv2011ge6gx"]
+
+[ext_resource type="Texture2D" uid="uid://dwl42fjpm3u85" path="res://assets/icon.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://cgmlt2p08ip6" path="res://scripts/battle_field/BS_player.gd" id="1_g2els"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1461085727]
+scale = Vector2(0.40382764, 0.40382764)
+script = ExtResource("1_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1916545859]
+sprite_frames = SubResource("SpriteFrames_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216586388]
+shape = SubResource("CircleShape2D_dqkch")
