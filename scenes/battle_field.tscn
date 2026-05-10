@@ -150,6 +150,4 @@ scale = Vector2(3.1200001, 1)
 anchor_mode = 0
 
 [node name="Player" parent="." unique_id=1461085727 instance=ExtResource("2_pvro5")]
-position = Vector2(28, 616)
-
-[connection signal="ready" from="Player" to="." method="_on_player_ready"]
+position = Vector2(602, 318)

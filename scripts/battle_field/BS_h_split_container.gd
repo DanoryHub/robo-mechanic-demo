@@ -6,7 +6,7 @@ extends HSplitContainer
 var bf_original_width = 0
 
 func resize_battle_field(offset: int):
-	var height = size.y * (offset * -1) / bf_original_width
+	#var height = size.y * (offset * -1) / bf_original_width
 	var scale_percentage = 1 - (offset * -1) / bf_original_width
 	battle_field.scale = Vector2(1, scale_percentage)
 
