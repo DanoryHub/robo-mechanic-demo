@@ -28,7 +28,7 @@ func _extend(flat_position: int, value: Vector2) -> bool:
 			_data_line.append(value)
 			break
 		
-		_data_line.append(Vector2(-1, -1))
+		_data_line.append(Vector2.INF)
 	
 	return true
 
@@ -36,18 +36,21 @@ func _extend(flat_position: int, value: Vector2) -> bool:
 func _insert(flat_position: int, value: Vector2) -> bool:
 	if _get_flat_len() < flat_position:
 		return false
-		
-	_data_line[flat_position] = value
+	
+	if flat_position < _get_flat_len():
+		_data_line[flat_position] = value
+	else:
+		_data_line.append(value)
 	
 	return true
 
 
 func _get_flat_position(position: Vector2) -> int:
-	return (position.x - 1) * _width + position.y
+	return max((position.x - 1), 0) * _width + position.y
 
 
 func put_val(position: Vector2i, value: Vector2) -> bool:
-	if _width <= 0:
+	if _width < 0:
 		return false
 	
 	var res: bool = true
@@ -69,3 +72,10 @@ func get_val(position: Vector2i) -> Vector2:
 		return res
 	
 	return _data_line[_get_flat_position(position)]
+
+func print_arr():
+	for i in range(len(_data_line)):
+		print(_data_line[i])
+		if i % (_width - 1) == 0 && i != 0:
+			print("\n")
+		

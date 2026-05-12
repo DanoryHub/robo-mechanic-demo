@@ -5,17 +5,37 @@ extends Node2D
 var start_player_tile_map_position: Vector2 = Vector2(0, 0)
 var current_player_tile_map_position: Vector2 = start_player_tile_map_position
 
+
 func set_player_tile_position(tile_map_location: Vector2):
 	var local_tile_position: Vector2 = tile_map_layer.map_to_local(tile_map_location)
 	player.position = local_tile_position
 	
-func get_local_tiles_location() -> Array[Vector2]:
-	var res: Array[Vector2] = []
+func get_local_tiles_location() -> Array2d:
+	var res: Array2d = Array2d.new()
+	
+	var res_arr_2d_width: int = 18
+	var res_arr_2d_height: int = 10
+	
+	res.set_width(res_arr_2d_width)
+	
+	for i in range(res_arr_2d_height):
+		for j in range(res_arr_2d_width):
+			var array_coord: Vector2i = Vector2i(i, j)
+			var tile_location = Vector2.INF
+			
+			if tile_map_layer.get_cell_source_id(array_coord) != -1:
+				tile_location = tile_map_layer.map_to_local(array_coord)
+				
+			res.put_val(array_coord, tile_location)
+			
 	return res
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
 	set_player_tile_position(start_player_tile_map_position)
+	
+	var tile_locs: Array2d = get_local_tiles_location()
 	
 	# TODO 1: Move moving logic into player scene (can calculate map in here and pass it to player)
 	# Can create function and check which tilesx have image and put their location into corresponding
@@ -25,6 +45,7 @@ func _ready() -> void:
 	# TODO 2: Forbid player to move outside set up tiles (Look up bozo) 
 	
 	player.outer_call_test()
+	tile_locs.print_arr()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
